@@ -1,5 +1,6 @@
 <?php
-
+use App\Employee;
+use App\Location;
 use Illuminate\Database\Seeder;
 
 class EmployeeSeeder extends Seeder
@@ -11,6 +12,15 @@ class EmployeeSeeder extends Seeder
      */
     public function run()
     {
-        //
+      factory(Employee::class, 100)
+      -> make()
+      -> each(function($emp) {
+
+        $loc = Location::inRandomOrder() -> first();
+        $emp -> location() -> associate($loc);
+
+        $emp -> save();
+
+      });
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-   protected $fillable [
+   protected $fillable = [
 
      	'firstname',
       'lastname',
@@ -16,7 +16,7 @@ class Employee extends Model
    ];
 
    public function location() {
-     return $this -> belongTo(Location::class);
+     return $this -> belongsTo(Location::class);
    }
 
    public function tasks() {
